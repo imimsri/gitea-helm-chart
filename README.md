@@ -6,7 +6,7 @@
 This is a kubernetes helm chart for [Gitea](https://gitea.com/).  
 It deploys a pod containing containers for the Gitea application along with a Postgresql db for storing application state. It can create peristent volume claims if desired, and also an ingress if the kubernetes cluster supports it.
 
-This chart was developed and tested on kubernetes version 1.10, but should work on earlier or later versions.
+This chart was developed and tested on kubernetes version 1.15, but should work on earlier or later versions.
 
 ## Prerequisites
 
@@ -19,12 +19,12 @@ This chart was developed and tested on kubernetes version 1.10, but should work 
 
 To install the chart, first add the repo:
 ```bash
-helm repo add jfelten https://jfelten.github.io/helm-charts/charts
+helm repo add imimsri https://imimsri.github.io/helm-charts/charts
 ```
 Then to install with the release name `gitea` in the namespace `gittea` with the customized values in custom_values.yaml run:
 
 ```bash
-$ helm install -- values custom_values.yaml --name gitea --namespace gittea jfelten/gitea
+$ helm install -- values custom_values.yaml --name gitea --namespace gittea imimsri/gitea
 ```
 or locally:
 
