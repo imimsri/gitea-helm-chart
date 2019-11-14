@@ -1,0 +1,22 @@
+{{- if .Values.ingress-route.enabled  }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ template "fullname" . }}-route
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`minio.do.imim.cloud`)
+    kind: Rule
+    services:
+    - name: {{ template "fullname" . }}-http
+      port: {{ .Values.service.http.port }}
+  tls:
+{{ toYaml .Values.ingress.tls | indent 4 }}
+{{- end -}}

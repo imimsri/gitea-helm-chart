@@ -12,6 +12,9 @@ images:
   ##
   # imagePullSecrets: myregistrykey
 
+repoIndexer:
+  enabled: false
+
 ## cache settings
 memcached:
   maxItemMemory: 64
@@ -31,6 +34,22 @@ ingress:
   ##tls support for the ingress
   #tls:
   #  - secretName: <TLS_SECRET>
+  #    hosts:
+  #      - 'git.example.com'
+  #
+## ingress-route settings - Optional
+ingress-route:
+  enabled: true
+  ## annotations used by the ingress - ex for k8s nginx ingress controller:
+  #ingress_annotations:
+  #  kubernetes.io/ingress.class: nginx
+  #  nginx.ingress.kubernetes.io/proxy-body-size: "0"
+  #  nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+  #  nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+
+  ##tls support for the ingress
+  tls:
+  #  - secretName: <CERTIFICATE>
   #    hosts:
   #      - 'git.example.com'
 

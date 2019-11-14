@@ -287,7 +287,11 @@ data:
     [indexer]
     ISSUE_INDEXER_PATH = indexers/issues.bleve
     ; repo indexer by default disabled, since it uses a lot of disk space
+    {{ if .Values.repoIndexer.enabled }}
+    REPO_INDEXER_ENABLED = {{ .Values.repoIndexer.enabled }}
+    {{ else }}
     REPO_INDEXER_ENABLED = false
+    {{ end }}
     REPO_INDEXER_PATH = indexers/repos.bleve
     UPDATE_BUFFER_LEN = 20
     MAX_FILE_SIZE = 1048576

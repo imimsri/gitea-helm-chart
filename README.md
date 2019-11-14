@@ -29,7 +29,7 @@ $ helm install -- values custom_values.yaml --name gitea --namespace gittea imim
 or locally:
 
 ```bash
-$ helm install --name gitea --namewspace tools .
+$ helm install --name gitea --namespace gitea --values custom_values.yml .
 ```
 > **Tip**: You can use the default [values.yaml](values.yaml)
 >
