@@ -1,0 +1,21 @@
+server:
+  host: drone.do.imim.cloud
+  protocol: https
+  adminUser: administrator@imim.es
+
+sourceControl:
+  provider: gitea
+  secret: jITWpJ52_BxGMGCeKZeXBdR6o7b96ehyEKPzP8UbqAs
+  gitea:
+    server: https://gitea.do.imim.cloud
+    clientSecret: jITWpJ52_BxGMGCeKZeXBdR6o7b96ehyEKPzP8UbqAs
+    clientID: 530ce909-cdad-4167-9ea2-330b009f2754
+
+
+ingressRoute:
+  enabled: true
+  host: drone.do.imim.cloud
+  tls:
+    certResolver: default
+
+
