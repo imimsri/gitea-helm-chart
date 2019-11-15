@@ -37,9 +37,10 @@ ingress:
   #    hosts:
   #      - 'git.example.com'
   #
-## ingress-route settings - Optional
-ingress-route:
-  enabled: true
+
+## traefik ingress-route settings - Optional
+ingressRoute:
+  enabled: false
   ## annotations used by the ingress - ex for k8s nginx ingress controller:
   #ingress_annotations:
   #  kubernetes.io/ingress.class: nginx
@@ -48,7 +49,7 @@ ingress-route:
   #  nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
 
   ##tls support for the ingress
-  tls:
+  # tls:
   #  - secretName: <CERTIFICATE>
   #    hosts:
   #      - 'git.example.com'
@@ -185,4 +186,5 @@ config:
   requireSignin: false
   disableRegistration: false
   openidSignin: true
-
+  lfsStartServer: false
+  lfsSecret: secret

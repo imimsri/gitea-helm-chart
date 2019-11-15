@@ -1,0 +1,55 @@
+service:
+  http:
+    externalHost: gitea.do.imim.cloud
+
+ingressRoute:
+  enabled: true
+  host: gitea.do.imim.cloud
+  tls:
+    certResolver: default
+
+config:
+#  secretKey: define_your_secret
+  disableInstaller: false
+  offlineMode: false
+  requireSignin: true
+  disableRegistration: true
+  openidSignin: true
+  lfsStartServer: false
+
+externalDB:
+  dbUser: "test"
+  dbPassword: "testtest"
+  dbHost: "postgres-postgresql.gitea.svc.cluster.local" # or some external host
+  dbPort: "5432"
+  dbDatabase: "gitea"
+
+# valid types: postgres, mysql, mssql, sqllite
+dbType: "postgres"
+useInPodPostgres: false
+
+repoIndexer:
+  enabled: true
+
+## Configure resource requests and limits
+## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+##
+resources:
+  gitea:
+    requests:
+      memory: 200Mi
+      cpu: 100m
+    limits:
+      memory: 1Gi
+      cpu: 1
+  postgres:
+    requests:
+      memory: 100Mi
+      cpu: 200m
+    limits:
+      memory: 1Gi
+      cpu: 1
+  memcached:
+    requests:
+      memory: 64Mi
+      cpu: 50m

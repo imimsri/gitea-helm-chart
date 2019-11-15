@@ -240,11 +240,11 @@ data:
     ; Landing page, can be "home", "explore", or "organizations"
     LANDING_PAGE = home
     ; Enables git-lfs support. true or false, default is false.
-    LFS_START_SERVER = false
+    LFS_START_SERVER = {{.Values.config.lfsStartServer}}false
     ; Where your lfs files reside, default is data/lfs.
     LFS_CONTENT_PATH = data/lfs
     ; LFS authentication secret, change this yourself
-    LFS_JWT_SECRET =
+    LFS_JWT_SECRET = {{.Values.config.lfsSecret }}
     ; LFS authentication validity period (in time.Duration), pushes taking longer than this may fail.
     LFS_HTTP_AUTH_EXPIRY = 20m
 

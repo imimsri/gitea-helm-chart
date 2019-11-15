@@ -1,4 +1,4 @@
-{{- if .Values.ingress-route.enabled  }}
+{{- if .Values.ingressRoute.enabled  }}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -12,11 +12,11 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`minio.do.imim.cloud`)
+  - match: Host(`{{.Values.ingressRoute.host}}`)
     kind: Rule
     services:
     - name: {{ template "fullname" . }}-http
       port: {{ .Values.service.http.port }}
   tls:
-{{ toYaml .Values.ingress.tls | indent 4 }}
+{{ toYaml .Values.ingressRoute.tls | indent 4 }}
 {{- end -}}

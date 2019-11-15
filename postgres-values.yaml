@@ -1,0 +1,6 @@
+global:
+  postgresql:
+    postgresqlUsername: test
+    postgresqlPassword: testtest
+    postgresqlDatabase: gitea
+  storageClass: nfs
