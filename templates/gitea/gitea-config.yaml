@@ -168,7 +168,11 @@ data:
     ; Disable SSH feature when not available
     DISABLE_SSH = false
     ; Whether to use the builtin SSH server or not.
+    {{- if .Values.service.ssh.internalServer  }}
+    START_SSH_SERVER = {{ .Values.service.ssh.internalServer  }}
+    {{- else }}
     START_SSH_SERVER = false
+    {{- end }}
     ; Username to use for the builtin SSH server. If blank, then it is the value of RUN_USER.
     BUILTIN_SSH_SERVER_USER =
     ; Domain name to be exposed in clone URL

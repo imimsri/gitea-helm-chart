@@ -1,6 +1,12 @@
 service:
   http:
     externalHost: gitea.do.imim.cloud
+  ssh:
+    serviceType: NodePort
+    port: 22
+    nodePort: 30222
+    externalHost: d1.do.imim.cloud
+    externalPort: 30222
 
 ingressRoute:
   enabled: true
@@ -15,18 +21,27 @@ config:
   requireSignin: true
   disableRegistration: true
   openidSignin: true
-  lfsStartServer: false
+  lfsStartServer: true
 
-externalDB:
-  dbUser: "test"
-  dbPassword: "testtest"
-  dbHost: "postgres-postgresql.gitea.svc.cluster.local" # or some external host
-  dbPort: "5432"
-  dbDatabase: "gitea"
+  #externalDB:
+  #  dbUser: "test"
+  #  dbPassword: "testtest"
+  #  dbHost: "postgres-postgresql.gitea.svc.cluster.local" # or some external host
+  #  dbPort: "5432"
+  #  dbDatabase: "gitea"
 
 # valid types: postgres, mysql, mssql, sqllite
 dbType: "postgres"
 useInPodPostgres: false
+
+persistence:
+  enabled: true
+  #existingGiteaClaim: gitea-gitea
+  #existingPostgresClaim: gitea-postgres
+  giteaSize: 10Gi
+  #postgresSize: 5Gi
+  storageClass: nfs
+  accessMode: ReadWriteMany
 
 repoIndexer:
   enabled: true

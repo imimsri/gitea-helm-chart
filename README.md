@@ -15,6 +15,11 @@ This chart was developed and tested on kubernetes version 1.15, but should work 
 - Please ensure that nodepools have enough resources to run both a web application and database
 - An external database if not using the in pod database
 
+## Generate keys
+```
+docker run -ti --rm gitea/gitea gitea generate secret SECRET_KEY
+```
+
 ## Installing the Chart
 
 To install the chart, first add the repo:
@@ -30,6 +35,7 @@ or locally:
 
 ```bash
 $ helm install --name gitea --namespace gitea --values custom_values.yml .
+$ helm secrets install -f secrets.gitea.yml -f custom_values.yml -n gitea --namespace gitea .
 ```
 > **Tip**: You can use the default [values.yaml](values.yaml)
 >
@@ -51,7 +57,7 @@ useInPodPostgres: true
 ```
 
 #### External database
-helm install -n postgres --namespace gitea -f postgres-values.yaml stable/postgresql
+helm secrets install -n postgres --namespace gitea -f secrets.postgres.yaml stable/postgresql
 
 PostgreSQL can be accessed via port 5432 on the following DNS name from within your cluster:
 
